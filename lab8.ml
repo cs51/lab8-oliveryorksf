@@ -158,7 +158,7 @@ Exercise 4: Given your implementation of Event, create a new event
 called "newswire" that should pass strings to the event handlers.
 ......................................................................*)
 
-let newswire = fun _ -> failwith "newswire not implemented" ;;
+let newswire : string event = WEvent.new_event () ;;
 
 (* News organizations might want to register event listeners to the
 newswire so that they might report on stories. Below are functions
@@ -177,6 +177,9 @@ newswire event.
 ......................................................................*)
 
 (* .. *)
+
+let _ = WEvent.add_listener newswire fakeNewsNetwork ;;
+let _ = WEvent.add_listener newswire buzzFake ;;
 
 (* Here are some headlines to play with. *)
 
